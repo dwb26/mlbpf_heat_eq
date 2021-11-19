@@ -24,7 +24,7 @@ void output_ml_data(HMM * hmm, int N_trials, double *** raw_times, double *** ra
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-// THIS IS V3
+// This is the heat equation model
 int main(void) {
 
 	clock_t timer = clock();

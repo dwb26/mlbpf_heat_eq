@@ -220,15 +220,11 @@ void read_cdf(w_double ** w_particles, HMM * hmm) {
 	FILE * DATA = fopen(ref_name, "r");
 	fscanf(DATA, "%d %d\n", &N, &length);
 
-	double w_sum;
 	for (int n = 0; n < length; n++) {
-		w_sum = 0.0;
 		for (int i = 0; i < N; i++)
 			fscanf(DATA, "%lf ", &w_particles[n][i].x);
-		for (int i = 0; i < N; i++) {
+		for (int i = 0; i < N; i++)
 			fscanf(DATA, "%lf ", &w_particles[n][i].w);
-			w_sum += w_particles[n][i].w;
-		}
 	}
 	fclose(DATA);
 }
@@ -555,7 +551,7 @@ double compute_mse(w_double ** weighted1, w_double ** weighted2, int length, int
 			x2_hat += weighted2[n][i].w * weighted2[n][i].x;
 			w2_sum += weighted2[n][i].w;
 		}
-		if (isnan(w2_sum))
+		if ( (isnan(w1_sum) ) || (isnan(w2_sum)) )
 			printf("NaN encountered\n");
 		else {
 			assert(fabs(w1_sum - 1.0) < 0.001);

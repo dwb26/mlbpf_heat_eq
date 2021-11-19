@@ -371,7 +371,6 @@ void ml_bootstrap_particle_filter_gsl(HMM * hmm, int * sample_sizes, int * nxs, 
 
 	fclose(CURVE_DATA);
 	fclose(ML_XHATS);
-	fclose(CORRECTIONS);
 
 	free(signs);
 	free(res_signs);
